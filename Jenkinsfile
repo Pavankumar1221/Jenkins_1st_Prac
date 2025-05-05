@@ -22,7 +22,7 @@ pipeline {
                     mkdir -p /var/jenkins_home/html-deploy
                     cp index.html /var/jenkins_home/html-deploy/
                     cd /var/jenkins_home/html-deploy
-                    nohup python -m http.server 8081 &
+                    nohup python3 -m http.server 8081 &
                 '''
                 echo 'App deployed at http://<jenkins-server-ip>:8081'
             }
