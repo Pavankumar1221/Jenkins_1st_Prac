@@ -17,14 +17,14 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Starting local web server...'
+                echo 'Starting local web server on port 8081...'
                 sh '''
-                    mkdir -p ~/html-deploy
-                    cp index.html ~/html-deploy/
-                    cd ~/html-deploy
-                    nohup python3 -m http.server 8080 &
+                    mkdir -p /var/jenkins_home/html-deploy
+                    cp index.html /var/jenkins_home/html-deploy/
+                    cd /var/jenkins_home/html-deploy
+                    nohup python -m http.server 8081 &
                 '''
-                echo 'App deployed at http://localhost:8080'
+                echo 'App deployed at http://<jenkins-server-ip>:8081'
             }
         }
     }
